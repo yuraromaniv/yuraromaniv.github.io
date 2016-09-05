@@ -1,0 +1,60 @@
+<html>
+<head>
+<meta charset="utf-8" />
+</head>
+<body>
+
+  <input id='q' type="radio" name="raz" onchange="check()" value="1">UA</input>
+   <input id='w' type="radio" name="raz" onchange="check()" value="2">RUS</input>
+    <input id='e' type="radio" name="raz" onchange="check()" value="3">ENG</input>
+
+    <div  id="ua">Раді тебе бачити!</div>
+       <div id="ru">Привет друг!!</div>
+         <div  id="eng">Hello friend!</div>
+
+    <script>
+    document.getElementById('ru').style.display = 'none';
+    document.getElementById('eng').style.display = 'none';
+    document.getElementById('ua').style.display = 'none';
+    var raz = document.getElementsByName('raz');
+    for (var i = 0; i < raz.length; i++) {
+      raz[i].onclick = function() {
+        localStorage.setItem('IRadioRaz', this.value);
+        if (i=0) {
+          document.getElementById('ua').style.display = 'block';
+        }
+      }
+    }
+    if(localStorage.getItem('IRadioRaz')) {
+      var IRadioRaz = localStorage.getItem('IRadioRaz');
+      var a = document.querySelector('input[name="raz"][value="' + IRadioRaz + '"]').setAttribute('checked','checked');
+
+    }
+    </script>
+    <script>
+    function check(){
+  var rarr=document.getElementsByName("raz");
+  if(rarr[0].checked){
+  document.getElementById('ru').style.display = 'none';
+  document.getElementById('eng').style.display = 'none';
+  document.getElementById('ua').style.display = 'block';
+    //То выбран первый radio
+  }
+else  if(rarr[1].checked){
+  document.getElementById('ua').style.display = 'none';
+  document.getElementById('eng').style.display = 'none';
+  document.getElementById('ru').style.display = 'block';
+    //То выбран первый radio
+  }
+  else  if(rarr[2].checked){
+    document.getElementById('ru').style.display = 'none';
+    document.getElementById('ua').style.display = 'none';
+    document.getElementById('eng').style.display = 'block';
+      //То выбран первый radio
+    }
+ }
+
+    </script>
+</body>
+
+</html>
